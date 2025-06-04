@@ -1,14 +1,11 @@
 from tkinter import Tk, BOTH, Canvas
 from window import Window
 from cell import Cell
+from maze import Maze
 
 def main():
     win = Window(800, 600)
-    cell_1 = Cell(win)
-    cell_2 = Cell(win)
-    cell_1.draw(win.canvas, 400, 300, 500, 400)
-    cell_2.draw(win.canvas, 700, 500, 799, 599)
-    cell_1.draw_move(cell_2)
+    maze = Maze(100, 100, 4, 4, 50, 100, win)
     win.wait_for_close()
 
 

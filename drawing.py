@@ -10,5 +10,5 @@ class Line():
         self.start = point_1
         self.end = point_2
 
-    def draw(self, canvas, fill_color):
-        canvas.create_line(self.start.x, self.start.y, self.end.x, self.end.y, fill=fill_color, width=2)
+    def draw(self, window, fill_color):
+        window.canvas.create_line(self.start.x, self.start.y, self.end.x, self.end.y, fill=fill_color, width=2)
