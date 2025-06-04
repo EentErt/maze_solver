@@ -2,7 +2,7 @@ from tkinter import Tk, BOTH, Canvas
 from drawing import Point, Line
 
 class Cell():
-    def __init__(self, window):
+    def __init__(self, window = None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -13,12 +13,14 @@ class Cell():
         self.__y2 = -1
         self.__win = window
 
-    def draw(self, canvas, x1, y1, x2, y2):
+    def draw(self, window, x1, y1, x2, y2):
         self.__x1 = x1
         self.__y1 = y1
         self.__x2 = x2
         self.__y2 = y2
-        self.__win = canvas
+        self.__win = window
+        if self.__win is None:
+            return
         top_left = Point(self.__x1, self.__y1)
         top_right = Point(self.__x2, self.__y1)
         bottom_left = Point(self.__x1, self.__y2)
@@ -48,4 +50,7 @@ class Cell():
         if undo:
             color = "gray"
         move_line.draw(self.__win, color)
+
+    def __repr__(self):
+        return f"({self.__x1}, {self.__y1}), ({self.__x2}, {self.__y2})"
         

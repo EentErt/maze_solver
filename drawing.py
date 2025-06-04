@@ -11,4 +11,6 @@ class Line():
         self.end = point_2
 
     def draw(self, window, fill_color):
+        if window is None:
+            return
         window.canvas.create_line(self.start.x, self.start.y, self.end.x, self.end.y, fill=fill_color, width=2)
