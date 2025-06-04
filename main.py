@@ -1,12 +1,11 @@
+from tkinter import Tk, BOTH, Canvas
 from window import Window
-from drawing import Point, Line
+from cell import Cell
 
 def main():
     win = Window(800, 600)
-    point_1 = Point(400, 300)
-    point_2 = Point(500, 400)
-    line = Line(point_1, point_2)
-    win.draw_line(line, "black")
+    cell_1 = Cell(win)
+    cell_1.draw(win.canvas, 400, 300, 500, 400)
     win.wait_for_close()
 
 

@@ -1,4 +1,5 @@
 from tkinter import Tk, BOTH, Canvas
+from drawing import Point, Line
 
 class Cell():
     def __init__(self, window):
@@ -12,4 +13,25 @@ class Cell():
         self.__y2 = -1
         self.__win = window
 
-    def draw(self, x):
+    def draw(self, canvas, x1, y1, x2, y2):
+        self.__x1 = x1
+        self.__y1 = y1
+        self.__x2 = x2
+        self.__y2 = y2
+        self.__win = canvas
+        top_left = Point(self.__x1, self.__y1)
+        top_right = Point(self.__x2, self.__y1)
+        bottom_left = Point(self.__x1, self.__y2)
+        bottom_right = Point(self.__x2, self.__y2)
+        if self.has_left_wall:
+            self.left_wall = Line(top_left, bottom_left)
+            self.left_wall.draw(self.__win, "black")
+        if self.has_right_wall:
+            self.right_wall = Line(top_right, bottom_right)
+            self.right_wall.draw(self.__win, "black")
+        if self.has_top_wall:
+            self.top_wall = Line(top_left, top_right)
+            self.top_wall.draw(self.__win, "black")
+        if self.has_bottom_wall:
+            self.bottom_wall = Line(bottom_left, bottom_right)
+            self.bottom_wall.draw(self.__win, "black")
