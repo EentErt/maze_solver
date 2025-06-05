@@ -3,6 +3,7 @@ from drawing import Point, Line
 
 class Cell():
     def __init__(self, window = None):
+        self.visited = False
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -37,6 +38,18 @@ class Cell():
         if self.has_bottom_wall:
             self.bottom_wall = Line(bottom_left, bottom_right)
             self.bottom_wall.draw(self.__win, "black")
+        if self.has_left_wall == False:
+            self.left_wall = Line(top_left, bottom_left)
+            self.left_wall.draw(self.__win, "white")
+        if self.has_right_wall == False:
+            self.right_wall = Line(top_right, bottom_right)
+            self.right_wall.draw(self.__win, "white")
+        if self.has_top_wall == False:
+            self.top_wall = Line(top_left, top_right)
+            self.top_wall.draw(self.__win, "white")
+        if self.has_bottom_wall == False:
+            self.bottom_wall = Line(bottom_left, bottom_right)
+            self.bottom_wall.draw(self.__win, "white")
 
     def draw_move(self, to_cell, undo = False):
         x_center = (self.__x1 + self.__x2) / 2
