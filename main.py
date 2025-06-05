@@ -5,7 +5,7 @@ from maze import Maze
 
 def main():
     win = Window(800, 600)
-    maze = Maze(100, 100, 3, 5, 76, 100, win)
+    maze = Maze(50, 50, 3, 3, 50, 50, win, seed = 1)
     win.wait_for_close()
 
 
